@@ -2,6 +2,7 @@ import graphene
 import django_filters
 from graphene_django import DjangoObjectType
 from hashx.mixins import ViewAllAuthenticatedQuery, AuthenticatedNode
+<<<<<<< HEAD
 from .models import Holidays, Location, OnlineClass, OfflineClass , Period , Class
 
 
@@ -15,17 +16,24 @@ class ClassNode(DjangoObjectType):
         interfaces = (AuthenticatedNode, )
     
 
+=======
+from .models import Holidays, Location, OnlineClass, OfflineClass, Period, Class
+>>>>>>> upstream/dev
 
 
 class PeriodFilter(django_filters.FilterSet):
     class Meta:
         model = Period
         fields = '__all__'
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> upstream/dev
 class PeriodNode(DjangoObjectType):
     class Meta:
         model = Period
         interfaces = (AuthenticatedNode, )
-    
 
 
 class HolidaysFilter(django_filters.FilterSet):
@@ -39,10 +47,16 @@ class HolidaysNode(DjangoObjectType):
         model = Holidays
         interfaces = (AuthenticatedNode, )
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/dev
 class OnlineClassFilter(django_filters.FilterSet):
     class Meta:
         model = OnlineClass
         fields = '__all__'
+
+
 class OnlineClassNode(DjangoObjectType):
     class Meta:
         model = OnlineClass
@@ -68,9 +82,9 @@ class RelayQuery(graphene.ObjectType):
     all_locations = ViewAllAuthenticatedQuery(
         LocationNode, filterset_class=LocationFilter)
     location = AuthenticatedNode.Field(LocationNode)
-    all_periods =  ViewAllAuthenticatedQuery(PeriodNode , filterset_class=PeriodFilter)
+    all_periods = ViewAllAuthenticatedQuery(
+        PeriodNode, filterset_class=PeriodFilter)
     periods = AuthenticatedNode.Field(PeriodNode)
-    all_onlineclasses =  ViewAllAuthenticatedQuery(OnlineClassNode , filterset_class=OnlineClassFilter)
+    all_onlineclasses = ViewAllAuthenticatedQuery(
+        OnlineClassNode, filterset_class=OnlineClassFilter)
     onlineclasses = AuthenticatedNode.Field(OnlineClassNode)
-    all_classes =  ViewAllAuthenticatedQuery(ClassNode , filterset_class=ClassFilter)
-    classes = AuthenticatedNode.Field(ClassNode)
