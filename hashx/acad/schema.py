@@ -162,7 +162,7 @@ class RelayQuery(graphene.ObjectType):
     all_firstyearbatches = ViewAllAuthenticatedQuery(
         FirstYearBatchNode, filterset_class=FirstYearBatchFilter)
     firstyearbatch = AuthenticatedNode.Field(FirstYearBatchNode)
-    amazonurl = graphene.String(fileId = graphene.String())
+    amazonurlfile = graphene.String(fileId = graphene.String())
     
     def resolve_amazonurl(self, info, fileId=None, **kwargs):
         if fileId:
